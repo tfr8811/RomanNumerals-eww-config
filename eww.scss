@@ -1,5 +1,4 @@
 * {
-  all: unset;
   font-family: Maple Mono;
 }
 
@@ -9,8 +8,8 @@ window {
 
 .taskbar-container {
   background-color: #141216;
-  color: #d8cab8; // in this case, this will set the font color
-  border-radius: 12px; // for round corners
+  color: #d8cab8;
+  border-radius: 12px;
 }
 
 .taskbar-label {
@@ -34,6 +33,7 @@ window {
 }
 
 .button {
+  all: unset;
   border-radius: 12px;
   margin: 10px;
 }
@@ -62,9 +62,4 @@ window {
   background-color: #634a88;
   color: #141216;
   transition-duration: 150ms;
-}
-
-.workspaces {
-  margin-left: 10px;
-  margin-right: 10px;
 }
