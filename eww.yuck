@@ -1,105 +1,37 @@
 (include "eww_widgets.yuck")
 
+(defwindow taskbar
+  :monitor '[0]'
+  :stacking "fg"
+  :geometry (geometry
+    :x "0"
+    :y "-40"
+    :width "920"
+    :height "40"
+    :anchor "top center")
+  (taskbar)
+)
+
 (defwindow test
   :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
+  :stacking "fg"
   :geometry (geometry
     :x "50"
-    :y "170"
-    :width "100"
+    :y "50"
+    :width "250"
     :height "100"
     :anchor "bottom right")
-  (test)
+  (test) ; opens the widget
 )
 
-(defwindow audio-visualizer
+(defwindow facts
   :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "170"
-    :y "170"
-    :width "100"
-    :height "100"
-    :anchor "bottom right")
-  (audio-visualizer)
-)
-
-(defwindow oblique-strategies
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "50"
-    :y "170"
-    :width "100"
-    :height "100"
-    :anchor "bottom left")
-  (oblique-strategies)
-)
-
-(defwindow yearbox
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "290"
-    :y "50"
-    :width "100"
-    :height "100"
-    :anchor "bottom left")
-  (yearbox)
-)
-
-(defwindow monthbox
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "170"
-    :y "50"
-    :width "100"
-    :height "100"
-    :anchor "bottom left")
-  (monthbox)
-)
-
-(defwindow daybox
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
+  :stacking "fg"
   :geometry (geometry
     :x "50"
     :y "50"
-    :width "100"
-    :height "100"
+    :width "400"
+    :height "200"
     :anchor "bottom left")
-  (daybox)
-)
-
-(defwindow userinfo
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "50"
-    :y "50"
-    :width "100"
-    :height "100"
-    :anchor "bottom right")
-  (userinfobox)
-)
-
-(defwindow powermenu
-  :monitor '[0]'
-  :stacking "bg"
-  :namespace "eww"
-  :geometry (geometry
-    :x "50"
-    :y "50"
-    :width "100"
-    :height "100"
-    :anchor "bottom right")
-  (powermenu)
+  (facts)
 )

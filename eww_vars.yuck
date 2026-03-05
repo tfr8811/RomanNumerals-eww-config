@@ -1,8 +1,8 @@
-; sup cuh
-
-(defpoll DAY :interval "1s" '~/.config/eww/scripts/day_format.sh')
-(defpoll MONTH :interval "1s" '~/.config/eww/scripts/month_format.sh')
-(defpoll YEAR :interval "1s" '~/.config/eww/scripts/year_format.sh')
-(defvar dice-button-text "⚅")
-(defvar cava-ascii-string "▁▂▃▄▅▆▇█")
-(defpoll STRATEGY :interval "15m" '~/.config/eww/scripts/oblique_strategies.sh')
+(defvar fact "click here for a fact!")
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+(defpoll volume :interval "1s" 
+    "amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+(defpoll audio-output :interval "2s"
+    "pactl get-default-sink | cut -d '.' -f 1")
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")

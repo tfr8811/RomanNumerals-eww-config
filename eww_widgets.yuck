@@ -1,96 +1,70 @@
 (include "eww_vars.yuck")
 
-(defwidget test []
-  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
+(defwidget taskbar []
+  (box
+    :class "taskbar-container"
     (button
-      :class "button"
-      :onclick "bash /home/thomasr/.config/eww/scripts/dice.sh"
-      (label :class "icon-label" :text {dice-button-text})
-    )
-  )
-)
-
-(defwidget audio-visualizer []
-  (box :height "100" :width "220" :halign "center" :valign "center" :class "container"
-    (button
-      :class "button"
-      :onclick "bash /home/thomasr/.config/eww/scripts/toggle_visualizer.sh"
+    :class "button" 
       (label
-        :class "ascii-visualizer"
-        :text {cava-ascii-string} ; Binds to the polled variable
+        :text "🔈${volume}% - ${audio-output}"
+        :class "taskbar-label"
+      )
+    )
+    (button
+    :class "button" 
+      (label
+        :text "🎵${music}"
+        :class "taskbar-label"
+      )
+    )
+    (systray
+      :spacing 5
+    )
+    (button
+    :class "button" 
+      (label
+        :text "🔋${EWW_BATTERY["BAT1"].capacity}% ${EWW_BATTERY["BAT1"].status}"
+        :class "taskbar-label"
+      )
+    )
+    (button
+    :class "button" 
+      (label
+        :text "${time}"
+        :class "taskbar-label"
       )
     )
   )
 )
 
-(defwidget oblique-strategies []
-  (box :height "100" :width "340" :halign "center" :valign "center" :class "container"
-    (label
-      :class "label"
-      :wrap true
-      :show-truncated false
-      :wrap-mode "word"
-      :justify "center"
-      :text STRATEGY
-    )
-  )
-)
-
-
-(defwidget daybox []
-  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
-    (label :class "label"  :text DAY)
-  )
-)
-
-(defwidget monthbox []
-  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
-    (label :class "label"  :text MONTH)
-  )
-)
-
-(defwidget yearbox []
-  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
-    (label :class "label"  :text YEAR)
-  )
-)
-
-(defwidget userinfobox []
-  (centerbox :height "100" :width "340" :halign "center" :valign "center" :class "userinfo-parent"
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "cd /home/thomasr && kitty -e bash -c 'hyfetch; exec bash' & disown" :class "button"
-        (label :class "icon-label"  :text "⌘")
-      )
-    )
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "GTK_THEME=diinki-retro-dark nautilus & disown"  :class "button"
-        (label :class "icon-label"  :text "🗀")
-      )
-    )
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "eww open powermenu" :class "button"
-        (label :class "icon-label"  :text "⭘")
+(defwidget facts []
+  (box 
+  :class "container"
+    (button 
+      :class "button" 
+      :onclick "bash ./scripts/facts.sh" 
+      (box
+        :space-evenly false
+        (image 
+        :path "./assets/cool-bug-facts.png"
+        :image-width 100
+        :preserve-aspect-ratio true
+        )
+        (label 
+          :text fact 
+          :class "label"
+          :wrap true
+          :show-truncated false
+          :wrap-mode "word"
+          :justify "center"
+        )
       )
     )
   )
 )
 
-(defwidget powermenu []
-  (centerbox :height "100" :width "340" :halign "center" :valign "center" :class "userinfo-parent"
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "systemctl poweroff" :class "poweroff-button"
-        (label :class "icon-label"  :text "⏻")
-      )
-    )
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "systemctl suspend"  :class "suspend-button"
-        (label :class "icon-label"  :text "⏾")
-      )
-    )
-    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
-      (button :onclick "eww close powermenu" :class "button"
-        (label :class "icon-label"  :text "⨯")
-      )
-    )
+(defwidget test []
+  (box :class "container"
+    (label :text "hello world!" :class "label")
   )
 )
