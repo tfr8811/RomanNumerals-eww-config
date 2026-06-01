@@ -1,8 +1,8 @@
-(defvar fact "click here for a fact!")
+(defvar fact "Click here for a fact!")
 (defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 (defpoll volume :interval "1s" 
     "amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
 (defpoll audio-output :interval "2s"
     "wpctl inspect '@DEFAULT_AUDIO_SINK@' | grep -F 'node.description' | cut -c 25- | head -c -2")
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")

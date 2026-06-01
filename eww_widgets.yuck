@@ -1,70 +1,68 @@
 (include "eww_vars.yuck")
 
 (defwidget taskbar []
-  (box
-    :class "taskbar-container"
-    (button
-    :class "button" 
-      (label
-        :text "🔈${volume}% - ${audio-output}"
-        :class "taskbar-label"
-      )
+    (box 
+        :class "taskbar-container-blink-${EWW_BATTERY["BAT1"].capacity < 25 && EWW_BATTERY["BAT1"].status == 'Discharging'}"
+        (button
+        :class "button" 
+        :onclick "bash -c 'pavucontrol; exec bash' & disown"
+            (label
+                :text "🔈${volume}% - ${audio-output}"
+                :class "taskbar-label"
+            )
+        )
+        (button :class "button"
+            (label
+                :class "taskbar-label"
+                :text "🔈${music}"
+            )
+        )
+        (systray
+        :spacing 5
+        )
+        (button :class "button"
+            (label
+                :class "taskbar-label"
+                :text "🔋${EWW_BATTERY["BAT1"].capacity}% ${EWW_BATTERY["BAT1"].status}"
+            )
+        )
+        (button :class "button"
+            (label
+                :class "taskbar-label"
+                :text "${time}"
+            )
+        )
     )
-    (button
-    :class "button" 
-      (label
-        :text "🎵${music}"
-        :class "taskbar-label"
-      )
-    )
-    (systray
-      :spacing 5
-    )
-    (button
-    :class "button" 
-      (label
-        :text "🔋${EWW_BATTERY["BAT1"].capacity}% ${EWW_BATTERY["BAT1"].status}"
-        :class "taskbar-label"
-      )
-    )
-    (button
-    :class "button" 
-      (label
-        :text "${time}"
-        :class "taskbar-label"
-      )
-    )
-  )
 )
 
 (defwidget facts []
-  (box 
-  :class "container"
-    (button 
-      :class "button" 
-      :onclick "bash ./scripts/facts.sh" 
-      (box
-        :space-evenly false
-        (image 
-        :path "./assets/cool-bug-facts.png"
-        :image-width 100
-        :preserve-aspect-ratio true
+    (box :class "container"
+        (button 
+            :class "button"
+            :onclick "bash ./scripts/facts.sh"
+            (box
+                :space-evenly false
+                (image 
+                :path "./assets/cool-bug-facts.png"
+                :image-width 100
+                :preserve-aspect-ratio true
+                )
+                (label :class "label"
+                    :text fact
+                    :wrap true
+                    :show-truncated false
+                    :wrap-mode "word"
+                    :justify "center"
+                )
+            )
         )
-        (label 
-          :text fact 
-          :class "label"
-          :wrap true
-          :show-truncated false
-          :wrap-mode "word"
-          :justify "center"
-        )
-      )
     )
-  )
 )
 
 (defwidget test []
-  (box :class "container"
-    (label :text "hello world!" :class "label")
-  )
+    (box :class "container"
+        (label :class "label"
+            :text "Hello world!"
+        )
+    )
 )

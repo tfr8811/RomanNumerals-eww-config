@@ -1,35 +1,47 @@
 * {
-  font-family: Maple Mono;
+    font-family: Maple Mono;
 }
 
 window {
-  background: transparent;
+    background: transparent;
+}
+.taskbar-container-blink-false {
+    background-color: black;
+    border-color: white;
+    border-radius: 12px;
 }
 
-.taskbar-container {
-  background-color: #141216;
-  color: #d8cab8;
-  border-radius: 12px;
+.taskbar-container-blink-true {
+    border-color: white;
+    border-radius: 12px;
+    animation: blinker 1s linear infinite;
 }
 
-.taskbar-label {
-  font-size: 12px;
-  font-weight: bold;
+@keyframes blinker {
+    100% { 
+        background-color: black;
+    }
+    50% {
+        background-color: #ff0000; 
+    }
+    0% {
+        background-color: black;
+    }
 }
 
 .container {
-  background-color: #141216;
-  border-width: 10px; // for that nice thick border
-  border-style: solid; // required, there are lots of funny options
-  border-color: #d8cab8;
-  color: #d8cab8; // in this case, this will set the font color
-  border-radius: 12px; // for round corners
+    background-color: black;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white;
+    color: white;
+    border-radius: 12px;
 }
 .label {
-  font-size: 24px;
-  font-weight: bold;
-  padding-left: 12px; // it is good to set padding
-  padding-right: 12px; // in case our text wraps
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .button {
@@ -43,22 +55,6 @@ window {
   transition-duration: 150ms;
 }
 .button:active {
-  background-color: #634a88;
-  color: #141216;
-  transition-duration: 150ms;
-}
-
-.w-button {
-  border-radius: 12px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.w-button:hover {
-  background-color: #ac82e9;
-  color: #141216;
-  transition-duration: 150ms;
-}
-.w-button:active {
   background-color: #634a88;
   color: #141216;
   transition-duration: 150ms;
